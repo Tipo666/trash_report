@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Menu Principal"),
+          title: new Text("Menu"),
           backgroundColor: Colors.blueAccent,
         ),
         drawer: new Drawer(
