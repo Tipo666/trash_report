@@ -14,7 +14,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="trash_report"
+        android:label="Trash Report"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
