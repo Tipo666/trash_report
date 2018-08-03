@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:trash_report/paginas/myData.dart';
 
 class VerReportes extends StatefulWidget {
   @override
@@ -6,6 +8,29 @@ class VerReportes extends StatefulWidget {
 }
 
 class _VerReportesState extends State<VerReportes> {
+  List<MyData> allData = [];
+
+  @override
+  void initState() {
+    DatabaseReference ref = FirebaseDatabase.instance.reference();
+    ref.child('Casos').once().then((DataSnapshot snap) {
+      var keys = snap.value.keys;
+      var data = snap.value;
+      allData.clear();
+
+      for (var key in keys) {
+        MyData d = new MyData(
+          data[key]['caso'],
+          data[key]['mensaje'],
+        );
+        allData.add(d);
+      }
+      setState(() {
+        print('Length : ${allData.length}');
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,111 +39,35 @@ class _VerReportesState extends State<VerReportes> {
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
         ),
-        body: new ListView(
+        body: new Container(
+            child: allData.length == 0
+                ? new Text('No hay datos disponibles')
+                : new ListView.builder(
+                    itemCount: allData.length,
+                    itemBuilder: (_, index) {
+                      return UI(
+                        allData[index].caso,
+                        allData[index].mensaje,
+                      );
+                    },
+                  )));
+  }
+
+  Widget UI(String caso, String mensaje) {
+    return new Card(
+      child: new Container(
+        padding: new EdgeInsets.all(20.0),
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new Card(
-              child: new Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const ListTile(
-                    leading: const Icon(
-                      Icons.album,
-                      color: Colors.yellowAccent,
-                    ),
-                    title: const Text('Cúmulo de basura'),
-                    subtitle: const Text('En proceso'),
-                  ),
-                  new ButtonTheme.bar(
-                    // make buttons use the appropriate styles for cards
-                    child: new ButtonBar(
-                      children: <Widget>[
-                        new FlatButton(
-                          child: const Text('DETALLE'),
-                          color: Colors.blueAccent,
-                          textColor: Colors.white,
-                          onPressed: () {/* ... */},
-                        ),
-                        new FlatButton(
-                          child: const Text('ARCHIVAR'),
-                          color: Colors.blueAccent,
-                          textColor: Colors.white,
-                          onPressed: () {/* ... */},
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            new Text(
+              'Caso : $caso',
+              style: Theme.of(context).textTheme.title,
             ),
-            new Card(
-              child: new Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const ListTile(
-                    leading: const Icon(
-                      Icons.album,
-                      color: Colors.greenAccent,
-                    ),
-                    title: const Text('Valla ilegal'),
-                    subtitle: const Text('Terminada'),
-                  ),
-                  new ButtonTheme.bar(
-                    // make buttons use the appropriate styles for cards
-                    child: new ButtonBar(
-                      children: <Widget>[
-                        new FlatButton(
-                          child: const Text('DETALLE'),
-                          color: Colors.blueAccent,
-                          textColor: Colors.white,
-                          onPressed: () {/* ... */},
-                        ),
-                        new FlatButton(
-                          child: const Text('ARCHIVAR'),
-                          color: Colors.blueAccent,
-                          textColor: Colors.white,
-                          onPressed: () {/* ... */},
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            new Card(
-              child: new Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const ListTile(
-                    leading: const Icon(
-                      Icons.album,
-                      color: Colors.redAccent,
-                    ),
-                    title: const Text('Construcción ilegal'),
-                    subtitle: const Text('No vista'),
-                  ),
-                  new ButtonTheme.bar(
-                    // make buttons use the appropriate styles for cards
-                    child: new ButtonBar(
-                      children: <Widget>[
-                        new FlatButton(
-                          child: const Text('DETALLE'),
-                          color: Colors.blueAccent,
-                          textColor: Colors.white,
-                          onPressed: () {/* ... */},
-                        ),
-                        new FlatButton(
-                          child: const Text('ARCHIVAR'),
-                          color: Colors.blueAccent,
-                          textColor: Colors.white,
-                          onPressed: () {/* ... */},
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            new Text('mensaje : $mensaje'),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }

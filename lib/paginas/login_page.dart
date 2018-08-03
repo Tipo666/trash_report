@@ -44,7 +44,8 @@ class _LoginPageState extends State<LoginPage> {
         widget.onSignIn();
       } catch (e) {
         setState(() {
-          _authHint = 'Sign In Error\n\n${e.toString()}';
+          _authHint =
+              'Ha habido un error. Verifica que ya tengas cuenta creada o que tu correo esté bien escrito.\n\n${e.toString()}';
         });
         print(e);
       }
@@ -88,8 +89,14 @@ class _LoginPageState extends State<LoginPage> {
         decoration: new InputDecoration(labelText: 'Contraseña'),
         obscureText: true,
         autocorrect: false,
-        validator: (val) =>
-            val.isEmpty ? 'La contraseña no puede estar vacía.' : null,
+        validator: (val) {
+          if (val.isEmpty) return 'La contraseña no puede estar vacía.';
+          //val.isEmpty ? 'La contraseña no puede estar vacía.' : null;
+
+          if (val.length < 6) {
+            return 'La contraseña debe ser mayor a 6 dígitos';
+          }
+        },
         onSaved: (val) => _password = val,
       )),
     ];

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:trash_report/paginas/auth.dart';
-
+import 'package:trash_report/paginas/contactos.dart';
 import 'package:trash_report/paginas/crear_reportes.dart';
 import 'package:trash_report/paginas/cuenta.dart';
+import 'package:trash_report/paginas/login_page.dart';
+import 'package:trash_report/paginas/metricas.dart';
+import 'package:trash_report/paginas/noticias.dart';
 import 'package:trash_report/paginas/ver_reportes.dart';
 
 import './page.dart';
@@ -36,8 +39,8 @@ class HomePage extends StatelessWidget {
         child: new ListView(
           children: <Widget>[
             new UserAccountsDrawerHeader(
-              accountEmail: new Text("cesarbaez100@gmail.com"),
-              accountName: new Text("César"),
+              accountEmail: new Text(""),
+              accountName: new Text(""),
               currentAccountPicture: new GestureDetector(
 
                   // onTap: () => print("Esta es tu cuenta Actual."),
@@ -69,18 +72,18 @@ class HomePage extends StatelessWidget {
                       builder: (BuildContext context) => new VerReportes()));
                 }),
             new ListTile(
-                title: new Text("Métricas"),
-                subtitle: new Text("En construcción"),
+                title: new Text("Estadísticos"),
+                //  subtitle: new Text("En construcción"),
                 trailing:
                     new Icon(Icons.insert_chart, color: Colors.blueAccent),
                 onTap: () {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => new Page("Métricas")));
+                      builder: (BuildContext context) => new Estadisticos()));
                 }),
             new ListTile(
                 title: new Text("Noticias"),
-                subtitle: new Text("En construcción"),
+                //subtitle: new Text("En construcción"),
                 //isThreeLine: true,
                 //dense: true,
                 // leading: const Icon(Icons.feedback),
@@ -88,7 +91,7 @@ class HomePage extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => new Page("Noticias")));
+                      builder: (BuildContext context) => new Noticias()));
                 }),
             new ListTile(
                 title: new Text("Cuenta"),
@@ -113,12 +116,12 @@ class HomePage extends StatelessWidget {
             ),
             new ListTile(
               title: new Text("Contactos"),
-              subtitle: new Text("En construcción"),
+              //subtitle: new Text("En construcción"),
               trailing: new Icon(Icons.contact_phone, color: Colors.blueAccent),
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => new Page("Contactos")));
+                    builder: (BuildContext context) => new Contactos()));
               },
             ),
             new ListTile(
@@ -146,168 +149,16 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 new Image.asset(
-                  'imagenes/baden.jpg',
-                  width: 350.0,
-                  height: 50.0,
+                  'imagenes/calle.jpg',
+                  width: 550.0,
+                  height: 1000.0,
                   fit: BoxFit.fill,
                   alignment: Alignment.topLeft,
-                ),
-                const ListTile(
-                  leading: const Icon(
-                    Icons.featured_video,
-                    color: Colors.blueAccent,
-                  ),
-                  title: const Text('Alcaldía Vegana nuevo Baden'),
-                  subtitle: const Text(
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '),
                 ),
               ],
             ),
           ),
-          new Card(
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new Image.asset(
-                  'imagenes/baden.jpg',
-                  width: 350.0,
-                  height: 50.0,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.topLeft,
-                ),
-                const ListTile(
-                  leading: const Icon(
-                    Icons.featured_video,
-                    color: Colors.blueAccent,
-                  ),
-                  title: const Text('Alcaldía Vegana nuevo Baden'),
-                  subtitle: const Text(
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '),
-                ),
-              ],
-            ),
-          ),
-          new Card(
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new Image.asset(
-                  'imagenes/baden.jpg',
-                  width: 350.0,
-                  height: 50.0,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.topLeft,
-                ),
-                const ListTile(
-                  leading: const Icon(
-                    Icons.featured_video,
-                    color: Colors.blueAccent,
-                  ),
-                  title: const Text('Alcaldía Vegana nuevo Baden'),
-                  subtitle: const Text(
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '),
-                ),
-              ],
-            ),
-          ),
-          new Card(
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new Image.asset(
-                  'imagenes/baden.jpg',
-                  width: 350.0,
-                  height: 50.0,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.topLeft,
-                ),
-                const ListTile(
-                  leading: const Icon(
-                    Icons.featured_video,
-                    color: Colors.blueAccent,
-                  ),
-                  title: const Text('Alcaldía Vegana nuevo Baden'),
-                  subtitle: const Text(
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '),
-                ),
-              ],
-            ),
-          ),
-          new Card(
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new Image.asset(
-                  'imagenes/baden.jpg',
-                  width: 350.0,
-                  height: 50.0,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.topLeft,
-                ),
-                const ListTile(
-                  leading: const Icon(
-                    Icons.featured_video,
-                    color: Colors.blueAccent,
-                  ),
-                  title: const Text('Alcaldía Vegana nuevo Baden'),
-                  subtitle: const Text(
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '),
-                ),
-              ],
-            ),
-          ),
-          new Card(
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new Image.asset(
-                  'imagenes/baden.jpg',
-                  width: 350.0,
-                  height: 50.0,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.topLeft,
-                ),
-                const ListTile(
-                  leading: const Icon(
-                    Icons.featured_video,
-                    color: Colors.blueAccent,
-                  ),
-                  title: const Text('Alcaldía Vegana nuevo Baden'),
-                  subtitle: const Text(
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '),
-                ),
-              ],
-            ),
-          ),
-          new Card(
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new Image.asset(
-                  'imagenes/baden.jpg',
-                  width: 350.0,
-                  height: 50.0,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.topLeft,
-                ),
-                const ListTile(
-                  leading: const Icon(
-                    Icons.featured_video,
-                    color: Colors.blueAccent,
-                  ),
-                  title: const Text('Alcaldía Vegana nuevo Baden'),
-                  subtitle: const Text(
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '),
-                ),
-              ],
-            ),
-          ),
+
           /*new Image.asset(
             'imagenes/calle.jpg',
             width: 490.0,
