@@ -41,16 +41,11 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
-    - imagenes/calle.jpg
+    - imagenes/calle2.jpg
     - imagenes/Alcaldia.png
-    - imagenes/catedral.jpg
     - imagenes/baden.jpg
-    - imagenes/fondo_login.jpg
-    - imagenes/bmilogo.png
+    - imagenes/altura.jpeg
     - imagenes/placeholder.png
-    - imagenes/basura.jpg
-    - imagenes/valla.jpg
-    - imagenes/construccion.jpg
     - imagenes/localizacion.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -10,6 +10,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:trash_report/paginas/dialogs.dart';
+
 class CrearReportes extends StatefulWidget {
   @override
   _CameraAppState createState() => _CameraAppState();
@@ -46,28 +48,41 @@ try {
 class _CameraAppState extends State<CrearReportes> {
   GlobalKey<FormState> _key = new GlobalKey();
   bool _autovalidate = false;
-  String caso, mensaje;
+  String caso, mensaje = 'Mensaje';
+  Dialogs dialogs = new Dialogs();
 
   List<DropdownMenuItem<String>> items = [
     new DropdownMenuItem(
-      child: new Text('Venta ilegal'),
-      value: 'Venta ilegal',
+      child: new Text('Escombro y Obstrucción en la vía pública'),
+      value: 'Escombro y Obstrucción en la vía pública',
     ),
     new DropdownMenuItem(
-      child: new Text('Cúmulo de Basura'),
-      value: 'Cúmulo de Basura',
+      child: new Text('Corte irregular de Arboles'),
+      value: 'Corte irregular de Arboles',
     ),
     new DropdownMenuItem(
-      child: new Text('Tala ilegal de árboles'),
-      value: 'Tala ilegal de árboles',
+      child: new Text('Construcción Ilegal'),
+      value: 'Construcción Ilegal',
     ),
     new DropdownMenuItem(
-      child: new Text('Escombros de construcción'),
-      value: 'Escombros de construcción',
+      child: new Text('Rotura ilegal de calle, aceras y contenes'),
+      value: 'Rotura ilegal de calle, aceras y contenes',
     ),
     new DropdownMenuItem(
-      child: new Text('Obstrucción de vías'),
-      value: 'Obstrucción de vías',
+      child: new Text('Negocios informales'),
+      value: 'Negocios informales',
+    ),
+    new DropdownMenuItem(
+      child: new Text('Publicidad Ilegal'),
+      value: 'Publicidad Ilegal',
+    ),
+    new DropdownMenuItem(
+      child: new Text('Cierre de Calles'),
+      value: 'Cierre de Calles',
+    ),
+    new DropdownMenuItem(
+      child: new Text('Residuo Sólidos y Vertedero Improvisados'),
+      value: 'Residuo Sólidos y Vertedero Improvisados',
     ),
   ];
 
@@ -244,7 +259,7 @@ class _CameraAppState extends State<CrearReportes> {
           decoration: new InputDecoration(
               hintText: 'Por favor introduzca la información del reporte'),
           onSaved: (val) {
-            mensaje = val;
+            mensaje = val + ' ';
           },
           validator: validateMessage,
           maxLines: 5,
@@ -258,29 +273,269 @@ class _CameraAppState extends State<CrearReportes> {
                 : new Image.file(image),
           ),
         ),
-        new FlatButton(
-          onPressed: _sendToServer,
-          child: new Text('Enviar'),
-          color: Colors.blueAccent,
-          textColor: Colors.white,
-          splashColor: Colors.redAccent,
+        new Center(
+          child: new FlatButton(
+            onPressed: () {
+              String cas = 'Caso', foto = 'Foto';
+
+              if (caso != null && image != null) {
+                confirm(context, 'Confirmación',
+                    'Desea enviar el reporte? Recuerde siempre escribir la información del reporte para ser atendido más rápidamente.');
+              } else {
+                if (caso != null) {
+                  cas = '';
+                }
+                if (image != null) {
+                  foto = '';
+                }
+
+                information(context, 'Advertencia',
+                    'Le falta elegir: \n\n$cas\n $foto');
+              }
+            },
+
+            //_sendToServer,
+
+            child: new Text('Enviar'),
+            color: Colors.blueAccent,
+            textColor: Colors.white,
+            splashColor: Colors.redAccent,
+            padding: EdgeInsets.all(20.0),
+          ),
+        ),
+        new Card(
+          child: new Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              new Divider(
+                color: Colors.blue,
+                indent: 16.0,
+              ),
+              new ListTile(
+                leading: new Icon(
+                  Icons.account_box,
+                  color: Colors.blue,
+                  size: 26.0,
+                ),
+                title: new Text(
+                  "Escombro y Obstrucción en la vía pública",
+                  style: new TextStyle(fontWeight: FontWeight.w400),
+                ),
+                subtitle: new Text(
+                    "Consiste en denuncias realizadas por ciudadanos cuando en la vía pública existe escombro de construcciones y limpieza de propiedades que obstruye el paso del peatón."),
+              ),
+              new Divider(
+                color: Colors.blue,
+                indent: 16.0,
+              ),
+              new ListTile(
+                leading: new Icon(
+                  Icons.account_box,
+                  color: Colors.blue,
+                  size: 26.0,
+                ),
+                title: new Text(
+                  "Corte irregular de Arboles",
+                  style: new TextStyle(fontWeight: FontWeight.w400),
+                ),
+                subtitle: new Text(
+                    'Denuncias de Ciudadanos sobre corte de arboles en patios de residencias o Edenorte, puede ser también arboles tumbado por el viento y que obstruyen la vía publica. Cortar árboles y sacarlo a las calzadas sin autorización está prohibido.'),
+              ),
+              new Divider(
+                color: Colors.blue,
+                indent: 16.0,
+              ),
+
+              new ListTile(
+                leading: new Icon(
+                  Icons.account_box,
+                  color: Colors.blue,
+                  size: 26.0,
+                ),
+                title: new Text(
+                  "Construcción Ilegal",
+                  style: new TextStyle(fontWeight: FontWeight.w400),
+
+                ),
+                subtitle: new Text('Consiste en construcciones que se levantan en zonas urbanas y rurales y que no han realizado los trámites correspondientes en el departamento de planeamiento urbano.'),
+              ),
+              new Divider(
+                color: Colors.blue,
+                indent: 16.0,
+              ),
+
+              new ListTile(
+                leading: new Icon(
+                  Icons.account_box,
+                  color: Colors.blue,
+                  size: 26.0,
+                ),
+                title: new Text(
+                  "Rotura ilegal de calle, aceras y contenes",
+                  style: new TextStyle(fontWeight: FontWeight.w400),
+
+                ),
+                subtitle: new Text('Denuncias sobre rotura de calles, aceras y contenes no autorizada por el departamento de planeamiento urbano para realizar conexiones ilegales de agua y cloacas.'),
+              ),
+              new Divider(
+                color: Colors.blue,
+                indent: 16.0,
+              ),
+              new ListTile(
+                leading: new Icon(
+                  Icons.account_box,
+                  color: Colors.blue,
+                  size: 26.0,
+                ),
+                title: new Text(
+                  "Negocios informales",
+                  style: new TextStyle(fontWeight: FontWeight.w400),
+
+                ),
+                subtitle: new Text('Instalación de negocios irregulares, instalaciones de tarantines, carros para venta de comida rápida no autorizada por el ayuntamiento de La Vega. '),
+              ),
+              new Divider(
+                color: Colors.blue,
+                indent: 16.0,
+              ),
+              new ListTile(
+                leading: new Icon(
+                  Icons.account_box,
+                  color: Colors.blue,
+                  size: 26.0,
+                ),
+                title: new Text(
+                  "Publicidad Ilegal",
+                  style: new TextStyle(fontWeight: FontWeight.w400),
+
+                ),
+                subtitle: new Text('Instalación de publicidad no autorizada, publicidad móvil, instalación de Vallas.'),
+              ),
+              
+              new Divider(
+                color: Colors.blue,
+                indent: 16.0,
+              ),
+
+              new ListTile(
+                leading: new Icon(
+                  Icons.account_box,
+                  color: Colors.blue,
+                  size: 26.0,
+                ),
+                title: new Text(
+                  "Cierre de Calles",
+                  style: new TextStyle(fontWeight: FontWeight.w400),
+
+                ),
+                subtitle: new Text('Denuncias de cierre de calles no autorizadas para el vaciado de plato, actividades recreativas.'),
+              ),
+
+              new Divider(
+                color: Colors.blue,
+                indent: 16.0,
+              ),
+
+
+              new ListTile(
+                leading: new Icon(
+                  Icons.account_box,
+                  color: Colors.blue,
+                  size: 26.0,
+                ),
+                title: new Text(
+                  "Residuo Sólidos y Vertedero Improvisados",
+                  style: new TextStyle(fontWeight: FontWeight.w400),
+
+                ),
+                subtitle: new Text('Consiste en sacar los desechos sólidos en horarios no establecidos y Permitir Vertedero Improvisados. Sacar la basura en horarios fuera de lugar y ser sorprendidos realizando vertederos improvisados serán sometidos al tribunal municipal.'),
+              ),
+
+              new Divider(
+                color: Colors.blue,
+                indent: 16.0,
+              ),
+            ],
+          ),
         ),
       ],
     );
+  }
+
+  confirmResult(bool isYes, BuildContext context) {
+    if (isYes) {
+      print('Yes action');
+      Navigator.pop(context);
+      _sendToServer();
+    } else {
+      print('Cancel action');
+      Navigator.pop(context);
+    }
+  }
+
+  confirm(BuildContext context, String title, String description) {
+    return showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[Text(description)],
+              ),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () => confirmResult(false, context),
+                child: Text('Cancelar'),
+              ),
+              FlatButton(
+                onPressed: () => confirmResult(true, context),
+                child: Text('Si'),
+              )
+            ],
+          );
+        });
+  }
+
+  information(BuildContext context, String title, String description) {
+    return showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[Text(description)],
+              ),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('OK'),
+              )
+            ],
+          );
+        });
   }
 
   _sendToServer() {
     if (_key.currentState.validate()) {
       _key.currentState.save();
       DatabaseReference ref = FirebaseDatabase.instance.reference();
+
       var data = {
         "caso": caso,
         "mensaje": mensaje,
         "localizacion": _startLocation,
       };
+
       ref.child('Casos').push().set(data).then((v) {
         _key.currentState.reset();
       });
+
       if (image != null) uploadFile();
     } else {
       setState(() {
@@ -288,10 +543,12 @@ class _CameraAppState extends State<CrearReportes> {
       });
     }
     Navigator.of(context).pop();
+    information(
+        context, 'Enviado', 'Su reporte ha sido enviado correctamente.');
   }
 
   String validateName(String val) {
-    return val.length == 0 ? "Elige el Caso primeto" : null;
+    return val.length == 0 ? "Elige el Caso primero" : null;
   }
 
   String validateMessage(String val) {

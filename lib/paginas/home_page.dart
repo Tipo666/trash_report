@@ -6,6 +6,8 @@ import 'package:trash_report/paginas/cuenta.dart';
 import 'package:trash_report/paginas/login_page.dart';
 import 'package:trash_report/paginas/metricas.dart';
 import 'package:trash_report/paginas/noticias.dart';
+import 'package:trash_report/paginas/reciclaje.dart';
+import 'package:trash_report/paginas/sobre_aplicacion.dart';
 import 'package:trash_report/paginas/ver_reportes.dart';
 
 import './page.dart';
@@ -95,23 +97,23 @@ class HomePage extends StatelessWidget {
                 }),
             new ListTile(
                 title: new Text("Cuenta"),
-                subtitle: new Text("En construcción"),
+                //subtitle: new Text("En construcción"),
                 trailing:
                     new Icon(Icons.person_outline, color: Colors.blueAccent),
                 onTap: () {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => new Page('Cuenta')));
+                      builder: (BuildContext context) => new Cuenta()));
                 }),
             new ListTile(
-              title: new Text("Configuración"),
-              subtitle: new Text("En construcción"),
-              trailing: new Icon(Icons.settings, color: Colors.blueAccent),
+              title: new Text("Reciclaje"),
+              //subtitle: new Text("En construcción"),
+              trailing: new Icon(Icons.all_inclusive, color: Colors.blueAccent),
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(new MaterialPageRoute(
                     builder: (BuildContext context) =>
-                        new Page("Configuración")));
+                        new Reciclaje()));
               },
             ),
             new ListTile(
@@ -124,6 +126,21 @@ class HomePage extends StatelessWidget {
                     builder: (BuildContext context) => new Contactos()));
               },
             ),
+
+            new Divider(),
+            new ListTile(
+              title: new Text("Sobre la Aplicación"),
+              //  subtitle: new Text("En construcción"),
+              trailing: new Icon(
+                Icons.perm_device_information,
+                color: Colors.blueAccent,
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => new SobreAplicacion()));
+              },
+            ),
             new ListTile(
               title: new Text("Cerrar Sesión"),
               //  subtitle: new Text("En construcción"),
@@ -133,7 +150,7 @@ class HomePage extends StatelessWidget {
               ),
               onTap: _signOut,
             ),
-            new Divider(),
+
             new ListTile(
               title: new Text("Cancelar"),
               trailing: new Icon(Icons.cancel, color: Colors.blueAccent),
@@ -149,8 +166,8 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 new Image.asset(
-                  'imagenes/calle.jpg',
-                  width: 550.0,
+                  'imagenes/calle2.jpg',
+                  width: 500.0,
                   height: 1000.0,
                   fit: BoxFit.fill,
                   alignment: Alignment.topLeft,

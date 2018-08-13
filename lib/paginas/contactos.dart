@@ -22,11 +22,12 @@ class _ContactosState extends State<Contactos> {
               children: <Widget>[
                 new Image.asset(
                   'imagenes/Alcaldia.png',
-                  width: 400.0,
-                  height: 250.0,
+                  width: 200.0,
+                  height: 120.0,
                   fit: BoxFit.fill,
                   alignment: Alignment.topLeft,
                 ),
+                new Divider(color: Colors.blue, indent: 16.0,),
                 const ListTile(
                   leading: const Icon(
                     Icons.contacts,
@@ -34,10 +35,11 @@ class _ContactosState extends State<Contactos> {
                   ),
                   title: const Text(
                     'Dirección y Contactos',
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                   ),
+
                   subtitle: const Text(
                     '\nC/ Don Antonio Guzmán # 419, Frente al Parque Duarte, Concepción de La Vega, La Vega, R.D.\n'
                         '\nTel.: (809) 242-2000\n'
@@ -46,13 +48,14 @@ class _ContactosState extends State<Contactos> {
                         TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
                   ),
                 ),
+                new Divider(color: Colors.blue, indent: 16.0,),
               ],
             ),
           ),
           new Image.asset(
             'imagenes/localizacion.png',
-            width: 300.0,
-            height: 350.0,
+            width: 20.0,
+            height: 365.0,
             fit: BoxFit.fill,
             alignment: Alignment.topLeft,
           ),
