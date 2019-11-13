@@ -1,6 +1,6 @@
 # trash_report
 
-Aplicación para la Tesis
+Aplicación para trabajar conjuntamente con los ayuntamientos.
 
 ## Getting Started
 
