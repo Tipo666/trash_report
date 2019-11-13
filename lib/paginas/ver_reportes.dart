@@ -10,6 +10,7 @@ class VerReportes extends StatefulWidget {
 class _VerReportesState extends State<VerReportes> {
   List<MyData> allData = [];
 
+  //Sobreescribimos initState para que inicie y cree la instancia de Firebase antes que la vista inicie
   @override
   void initState() {
     DatabaseReference ref = FirebaseDatabase.instance.reference();
@@ -19,6 +20,7 @@ class _VerReportesState extends State<VerReportes> {
       allData.clear();
 
 
+      //Recorre la listas de casos y mensajes para agregarlas
       for (var key in keys) {
         MyData d = new MyData(
           data[key]['caso'],
@@ -42,7 +44,9 @@ class _VerReportesState extends State<VerReportes> {
         ),
         body: Container(
             child: allData.length == 0
+            //Para presentar el indicador de progreso antes de mostrar los datos
                 ? Center(child: CircularProgressIndicator(),)
+            //Crea el listView en base a la cantidad de reportes que haya en Firebase
                 : ListView.builder(
                     itemCount: allData.length,
                     itemBuilder: (_, index) {
@@ -54,6 +58,7 @@ class _VerReportesState extends State<VerReportes> {
                   )));
   }
 
+  //Meteodo que muestra los casos en un Card, alimenta al listView Builder
   Widget uI(String caso, String mensaje) {
     return Card(
       child: Container(
