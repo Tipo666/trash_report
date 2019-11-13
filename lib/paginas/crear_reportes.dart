@@ -2,13 +2,10 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:location/location.dart';
-import 'package:flutter/services.dart';
+//import 'package:location/location.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:math';
-import 'dart:typed_data';
 
 import 'package:trash_report/paginas/dialogs.dart';
 
@@ -52,35 +49,38 @@ class _CameraAppState extends State<CrearReportes> {
   Dialogs dialogs = new Dialogs();
 
   List<DropdownMenuItem<String>> items = [
-    new DropdownMenuItem(
+
+
+
+    DropdownMenuItem(
       child: new Text('Escombro y Obstrucción en la vía pública'),
       value: 'Escombro y Obstrucción en la vía pública',
     ),
-    new DropdownMenuItem(
+    DropdownMenuItem(
       child: new Text('Corte irregular de Arboles'),
       value: 'Corte irregular de Arboles',
     ),
-    new DropdownMenuItem(
+    DropdownMenuItem(
       child: new Text('Construcción Ilegal'),
       value: 'Construcción Ilegal',
     ),
-    new DropdownMenuItem(
+    DropdownMenuItem(
       child: new Text('Rotura ilegal de calle, aceras y contenes'),
       value: 'Rotura ilegal de calle, aceras y contenes',
     ),
-    new DropdownMenuItem(
+    DropdownMenuItem(
       child: new Text('Negocios informales'),
       value: 'Negocios informales',
     ),
-    new DropdownMenuItem(
+    DropdownMenuItem(
       child: new Text('Publicidad Ilegal'),
       value: 'Publicidad Ilegal',
     ),
-    new DropdownMenuItem(
+    DropdownMenuItem(
       child: new Text('Cierre de Calles'),
       value: 'Cierre de Calles',
     ),
-    new DropdownMenuItem(
+    DropdownMenuItem(
       child: new Text('Residuo Sólidos y Vertedero Improvisados'),
       value: 'Residuo Sólidos y Vertedero Improvisados',
     ),
@@ -94,9 +94,10 @@ class _CameraAppState extends State<CrearReportes> {
 
   Image image1;
 
-  Location _location = new Location();
+  //Location _location = new Location();
   String error;
 
+  /*
   @override
   void initState() {
     super.initState();
@@ -111,6 +112,8 @@ class _CameraAppState extends State<CrearReportes> {
     });
   }
 
+  */
+/*
   // Platform messages are asynchronous, so we initialize in an async method.
   initPlatformState() async {
     Map<String, double> location;
@@ -139,12 +142,10 @@ class _CameraAppState extends State<CrearReportes> {
     setState(() {
       _startLocation = location;
     });
-  }
+  }*/
 
   File image;
 
-//  To use Gallery or File Manager to pick Image
-//  Comment Line No. 19 and uncomment Line number 20
   picker() async {
     File img = await ImagePicker.pickImage(source: ImageSource.camera);
 
@@ -181,11 +182,11 @@ class _CameraAppState extends State<CrearReportes> {
 
     final StorageUploadTask task = ref.putFile(file);
 
-    final Uri downloadUrl = (await task.future).downloadUrl;
+    //final Uri downloadUrl = (await task.future).downloadUrl;
 
-    _path = downloadUrl.toString();
+    //_path = downloadUrl.toString();
 
-    print(_path);
+    //print(_path);
   }
 
   @override
@@ -201,48 +202,48 @@ class _CameraAppState extends State<CrearReportes> {
       ];
     }
 
-    widgets.add(new Center(
-        child: new Text(_startLocation != null
+    widgets.add(Center(
+        child: Text(_startLocation != null
             ? 'Localización Inicial: $_startLocation\n'
             : 'Error: $error\n')));
 
-    widgets.add(new Center(
-        child: new Text(_currentLocation != null
+    widgets.add(Center(
+        child: Text(_currentLocation != null
             ? 'Localización continua: $_currentLocation\n'
             : 'Error: $error\n')));
 
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Crear Reportes'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Crear Reportes'),
         centerTitle: true,
       ),
-      body: new SingleChildScrollView(
-        child: new Container(
-          padding: new EdgeInsets.all(15.0),
-          child: new Form(
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(15.0),
+          child: Form(
             key: _key,
             autovalidate: _autovalidate,
             child: formUI(),
           ),
         ),
       ),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: picker,
         tooltip: "Abrir cámara",
-        child: new Icon(Icons.camera_alt),
+        child: Icon(Icons.camera_alt),
         backgroundColor: Colors.blueAccent,
       ),
     );
   }
 
   Widget formUI() {
-    return new Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        new Row(
+        Row(
           children: <Widget>[
-            new SizedBox(width: 10.0),
-            new DropdownButtonHideUnderline(
+            SizedBox(width: 10.0),
+            DropdownButtonHideUnderline(
                 child: new DropdownButton(
               items: items,
               hint: new Text('Tipo de caso'),
@@ -255,7 +256,7 @@ class _CameraAppState extends State<CrearReportes> {
             ))
           ],
         ),
-        new TextFormField(
+        TextFormField(
           decoration: new InputDecoration(
               hintText: 'Por favor introduzca la información del reporte'),
           onSaved: (val) {
@@ -265,7 +266,7 @@ class _CameraAppState extends State<CrearReportes> {
           maxLines: 5,
           maxLength: 256,
         ),
-        new Container(
+        Container(
           child: new Center(
             child: image == null
                 ? new Image.asset('imagenes/placeholder.png',
@@ -273,8 +274,8 @@ class _CameraAppState extends State<CrearReportes> {
                 : new Image.file(image),
           ),
         ),
-        new Center(
-          child: new FlatButton(
+        Center(
+          child: FlatButton(
             onPressed: () {
               String cas = 'Caso', foto = 'Foto';
 
@@ -296,7 +297,7 @@ class _CameraAppState extends State<CrearReportes> {
 
             //_sendToServer,
 
-            child: new Text('Enviar'),
+            child: Text('Enviar'),
             color: Colors.blueAccent,
             textColor: Colors.white,
             splashColor: Colors.redAccent,
@@ -304,14 +305,14 @@ class _CameraAppState extends State<CrearReportes> {
           ),
         ),
         new Card(
-          child: new Column(
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              new Divider(
+              Divider(
                 color: Colors.blue,
                 indent: 16.0,
               ),
-              new ListTile(
+              ListTile(
                 leading: new Icon(
                   Icons.account_box,
                   color: Colors.blue,
@@ -324,11 +325,11 @@ class _CameraAppState extends State<CrearReportes> {
                 subtitle: new Text(
                     "Consiste en denuncias realizadas por ciudadanos cuando en la vía pública existe escombro de construcciones y limpieza de propiedades que obstruye el paso del peatón."),
               ),
-              new Divider(
+              Divider(
                 color: Colors.blue,
                 indent: 16.0,
               ),
-              new ListTile(
+              ListTile(
                 leading: new Icon(
                   Icons.account_box,
                   color: Colors.blue,
@@ -341,12 +342,11 @@ class _CameraAppState extends State<CrearReportes> {
                 subtitle: new Text(
                     'Denuncias de Ciudadanos sobre corte de arboles en patios de residencias o Edenorte, puede ser también arboles tumbado por el viento y que obstruyen la vía publica. Cortar árboles y sacarlo a las calzadas sin autorización está prohibido.'),
               ),
-              new Divider(
+              Divider(
                 color: Colors.blue,
                 indent: 16.0,
               ),
-
-              new ListTile(
+              ListTile(
                 leading: new Icon(
                   Icons.account_box,
                   color: Colors.blue,
@@ -355,16 +355,15 @@ class _CameraAppState extends State<CrearReportes> {
                 title: new Text(
                   "Construcción Ilegal",
                   style: new TextStyle(fontWeight: FontWeight.w400),
-
                 ),
-                subtitle: new Text('Consiste en construcciones que se levantan en zonas urbanas y rurales y que no han realizado los trámites correspondientes en el departamento de planeamiento urbano.'),
+                subtitle: new Text(
+                    'Consiste en construcciones que se levantan en zonas urbanas y rurales y que no han realizado los trámites correspondientes en el departamento de planeamiento urbano.'),
               ),
-              new Divider(
+              Divider(
                 color: Colors.blue,
                 indent: 16.0,
               ),
-
-              new ListTile(
+              ListTile(
                 leading: new Icon(
                   Icons.account_box,
                   color: Colors.blue,
@@ -373,15 +372,15 @@ class _CameraAppState extends State<CrearReportes> {
                 title: new Text(
                   "Rotura ilegal de calle, aceras y contenes",
                   style: new TextStyle(fontWeight: FontWeight.w400),
-
                 ),
-                subtitle: new Text('Denuncias sobre rotura de calles, aceras y contenes no autorizada por el departamento de planeamiento urbano para realizar conexiones ilegales de agua y cloacas.'),
+                subtitle: new Text(
+                    'Denuncias sobre rotura de calles, aceras y contenes no autorizada por el departamento de planeamiento urbano para realizar conexiones ilegales de agua y cloacas.'),
               ),
-              new Divider(
+              Divider(
                 color: Colors.blue,
                 indent: 16.0,
               ),
-              new ListTile(
+              ListTile(
                 leading: new Icon(
                   Icons.account_box,
                   color: Colors.blue,
@@ -390,15 +389,15 @@ class _CameraAppState extends State<CrearReportes> {
                 title: new Text(
                   "Negocios informales",
                   style: new TextStyle(fontWeight: FontWeight.w400),
-
                 ),
-                subtitle: new Text('Instalación de negocios irregulares, instalaciones de tarantines, carros para venta de comida rápida no autorizada por el ayuntamiento de La Vega. '),
+                subtitle: new Text(
+                    'Instalación de negocios irregulares, instalaciones de tarantines, carros para venta de comida rápida no autorizada por el ayuntamiento de La Vega. '),
               ),
-              new Divider(
+              Divider(
                 color: Colors.blue,
                 indent: 16.0,
               ),
-              new ListTile(
+              ListTile(
                 leading: new Icon(
                   Icons.account_box,
                   color: Colors.blue,
@@ -407,17 +406,15 @@ class _CameraAppState extends State<CrearReportes> {
                 title: new Text(
                   "Publicidad Ilegal",
                   style: new TextStyle(fontWeight: FontWeight.w400),
-
                 ),
-                subtitle: new Text('Instalación de publicidad no autorizada, publicidad móvil, instalación de Vallas.'),
+                subtitle: new Text(
+                    'Instalación de publicidad no autorizada, publicidad móvil, instalación de Vallas.'),
               ),
-              
-              new Divider(
+              Divider(
                 color: Colors.blue,
                 indent: 16.0,
               ),
-
-              new ListTile(
+              ListTile(
                 leading: new Icon(
                   Icons.account_box,
                   color: Colors.blue,
@@ -426,18 +423,15 @@ class _CameraAppState extends State<CrearReportes> {
                 title: new Text(
                   "Cierre de Calles",
                   style: new TextStyle(fontWeight: FontWeight.w400),
-
                 ),
-                subtitle: new Text('Denuncias de cierre de calles no autorizadas para el vaciado de plato, actividades recreativas.'),
+                subtitle: new Text(
+                    'Denuncias de cierre de calles no autorizadas para el vaciado de plato, actividades recreativas.'),
               ),
-
-              new Divider(
+              Divider(
                 color: Colors.blue,
                 indent: 16.0,
               ),
-
-
-              new ListTile(
+              ListTile(
                 leading: new Icon(
                   Icons.account_box,
                   color: Colors.blue,
@@ -446,12 +440,11 @@ class _CameraAppState extends State<CrearReportes> {
                 title: new Text(
                   "Residuo Sólidos y Vertedero Improvisados",
                   style: new TextStyle(fontWeight: FontWeight.w400),
-
                 ),
-                subtitle: new Text('Consiste en sacar los desechos sólidos en horarios no establecidos y Permitir Vertedero Improvisados. Sacar la basura en horarios fuera de lugar y ser sorprendidos realizando vertederos improvisados serán sometidos al tribunal municipal.'),
+                subtitle: new Text(
+                    'Consiste en sacar los desechos sólidos en horarios no establecidos y Permitir Vertedero Improvisados. Sacar la basura en horarios fuera de lugar y ser sorprendidos realizando vertederos improvisados serán sometidos al tribunal municipal.'),
               ),
-
-              new Divider(
+              Divider(
                 color: Colors.blue,
                 indent: 16.0,
               ),
@@ -547,6 +540,13 @@ class _CameraAppState extends State<CrearReportes> {
         context, 'Enviado', 'Su reporte ha sido enviado correctamente.');
   }
 
+  _menuDropDown(Text titulo, Text valor){
+    return DropdownMenuItem(
+      child: titulo,
+      value: valor,
+    );
+  }
+
   String validateName(String val) {
     return val.length == 0 ? "Elige el Caso primero" : null;
   }
@@ -554,4 +554,6 @@ class _CameraAppState extends State<CrearReportes> {
   String validateMessage(String val) {
     return val.length == 0 ? "Ingresa el mensaje primero" : null;
   }
+
+
 }

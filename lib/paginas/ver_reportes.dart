@@ -18,6 +18,7 @@ class _VerReportesState extends State<VerReportes> {
       var data = snap.value;
       allData.clear();
 
+
       for (var key in keys) {
         MyData d = new MyData(
           data[key]['caso'],
@@ -34,18 +35,18 @@ class _VerReportesState extends State<VerReportes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: new AppBar(
-          title: new Text("Ver Reportes"),
+        appBar: AppBar(
+          title: Text("Ver Reportes"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
         ),
-        body: new Container(
+        body: Container(
             child: allData.length == 0
-                ? new Text('No hay datos disponibles')
-                : new ListView.builder(
+                ? Center(child: CircularProgressIndicator(),)
+                : ListView.builder(
                     itemCount: allData.length,
                     itemBuilder: (_, index) {
-                      return UI(
+                      return uI(
                         allData[index].caso,
                         allData[index].mensaje,
                       );
@@ -53,18 +54,18 @@ class _VerReportesState extends State<VerReportes> {
                   )));
   }
 
-  Widget UI(String caso, String mensaje) {
-    return new Card(
-      child: new Container(
-        padding: new EdgeInsets.all(20.0),
-        child: new Column(
+  Widget uI(String caso, String mensaje) {
+    return Card(
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new Text(
+            Text(
               'Caso : $caso',
               style: Theme.of(context).textTheme.title,
             ),
-            new Text('mensaje : $mensaje'),
+            Text('mensaje : $mensaje'),
           ],
         ),
       ),

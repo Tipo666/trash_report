@@ -3,14 +3,11 @@ import 'package:trash_report/paginas/auth.dart';
 import 'package:trash_report/paginas/contactos.dart';
 import 'package:trash_report/paginas/crear_reportes.dart';
 import 'package:trash_report/paginas/cuenta.dart';
-import 'package:trash_report/paginas/login_page.dart';
-import 'package:trash_report/paginas/metricas.dart';
 import 'package:trash_report/paginas/noticias.dart';
 import 'package:trash_report/paginas/reciclaje.dart';
 import 'package:trash_report/paginas/sobre_aplicacion.dart';
 import 'package:trash_report/paginas/ver_reportes.dart';
 
-import './page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({this.auth, this.onSignOut});
@@ -53,7 +50,10 @@ class HomePage extends StatelessWidget {
                           "https://pbs.twimg.com/profile_banners/26569475/1515246269/1500x500"),
                       fit: BoxFit.fill)),
             ),
+
+            //////////////////////////////////////////////
             new ListTile(
+
                 title: new Text("Crear Reportes"),
                 //subtitle: new Text("En construcción"),
                 trailing:
@@ -73,16 +73,7 @@ class HomePage extends StatelessWidget {
                   Navigator.of(context).push(new MaterialPageRoute(
                       builder: (BuildContext context) => new VerReportes()));
                 }),
-            new ListTile(
-                title: new Text("Estadísticos"),
-                //  subtitle: new Text("En construcción"),
-                trailing:
-                    new Icon(Icons.insert_chart, color: Colors.blueAccent),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => new Estadisticos()));
-                }),
+
             new ListTile(
                 title: new Text("Noticias"),
                 //subtitle: new Text("En construcción"),
@@ -92,8 +83,8 @@ class HomePage extends StatelessWidget {
                 trailing: new Icon(Icons.feedback, color: Colors.blueAccent),
                 onTap: () {
                   Navigator.of(context).pop();
-                  Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => new Noticias()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => Noticias()));
                 }),
             new ListTile(
                 title: new Text("Cuenta"),
@@ -112,8 +103,7 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                        new Reciclaje()));
+                    builder: (BuildContext context) => new Reciclaje()));
               },
             ),
             new ListTile(
@@ -159,6 +149,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+      /*
       body: new ListView(
         children: <Widget>[
           new Card(
@@ -183,7 +174,7 @@ class HomePage extends StatelessWidget {
             fit: BoxFit.fill,
           ),*/
         ],
-      ),
+      ),*/
       floatingActionButton: new FloatingActionButton(
         onPressed: () {
           _scaffoldKey.currentState.openDrawer();

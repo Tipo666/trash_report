@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:trash_report/paginas/auth.dart';
 import 'package:trash_report/paginas/login_page.dart';
 import 'package:trash_report/paginas/root_page.dart';
-import 'package:trash_report/paginas/splash_screen.dart';
 import './paginas/home_page.dart';
 
 var routes = <String, WidgetBuilder>{
