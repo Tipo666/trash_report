@@ -33,14 +33,14 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    ListTile metodoListile(Text titulo, Icon icon) {
+    ListTile metodoListile(Text titulo, Icon icon, navegacion) {
       return ListTile(
         title: titulo,
         trailing: icon,
         onTap: () {
           Navigator.of(context).pop();
           Navigator.of(context).push(new MaterialPageRoute(
-              builder: (BuildContext context) => new CrearReportes()));
+              builder: (BuildContext context) => navegacion));
         },
       );
     }
@@ -70,87 +70,18 @@ class HomePage extends StatelessWidget {
 
             //////////////////////////////////////////////
 
-            metodoListile(Text("Crear Reportes"), Icon(Icons.account_balance),),
+            metodoListile(Text("Crear Reportes"), Icon(Icons.create_new_folder, color: Colors.blueAccent,), CrearReportes()),
+            metodoListile(Text("Ver mis Reportes"), Icon(Icons.view_list, color: Colors.blueAccent,), VerReportes()),
+            metodoListile(Text("Noticias"), Icon(Icons.feedback, color: Colors.blueAccent,), Noticias()),
+            metodoListile(Text("Cuenta"), Icon(Icons.person_outline, color: Colors.blueAccent,), Cuenta()),
+            metodoListile(Text("Reciclaje"), Icon(Icons.all_inclusive, color: Colors.blueAccent,), Reciclaje()),
+            metodoListile(Text("Contactos"), Icon(Icons.contact_phone, color: Colors.blueAccent,), Contactos()),
+
+             Divider(),
+
+            metodoListile(Text("Sobre la aplicación"), Icon(Icons.perm_device_information, color: Colors.blueAccent,), SobreAplicacion()),
 
             ListTile(
-                title: Text("Crear Reportes"),
-                //subtitle: new Text("En construcción"),
-                trailing:
-                    Icon(Icons.create_new_folder, color: Colors.blueAccent),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => new CrearReportes()));
-                }),
-            new ListTile(
-                title: new Text("Ver mis Reportes"),
-                //subtitle: new Text("En construcción"),
-                trailing:
-                    new Icon(Icons.library_books, color: Colors.blueAccent),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => new VerReportes()));
-                }),
-
-            new ListTile(
-                title: new Text("Noticias"),
-                //subtitle: new Text("En construcción"),
-                //isThreeLine: true,
-                //dense: true,
-                // leading: const Icon(Icons.feedback),
-                trailing: new Icon(Icons.feedback, color: Colors.blueAccent),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => Noticias()));
-                }),
-            new ListTile(
-                title: new Text("Cuenta"),
-                //subtitle: new Text("En construcción"),
-                trailing:
-                    new Icon(Icons.person_outline, color: Colors.blueAccent),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => new Cuenta()));
-                }),
-            new ListTile(
-              title: new Text("Reciclaje"),
-              //subtitle: new Text("En construcción"),
-              trailing: new Icon(Icons.all_inclusive, color: Colors.blueAccent),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => new Reciclaje()));
-              },
-            ),
-            new ListTile(
-              title: new Text("Contactos"),
-              //subtitle: new Text("En construcción"),
-              trailing: new Icon(Icons.contact_phone, color: Colors.blueAccent),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => new Contactos()));
-              },
-            ),
-
-            new Divider(),
-            new ListTile(
-              title: new Text("Sobre la Aplicación"),
-              //  subtitle: new Text("En construcción"),
-              trailing: new Icon(
-                Icons.perm_device_information,
-                color: Colors.blueAccent,
-              ),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => new SobreAplicacion()));
-              },
-            ),
-            new ListTile(
               title: new Text("Cerrar Sesión"),
               //  subtitle: new Text("En construcción"),
               trailing: new Icon(
@@ -160,40 +91,14 @@ class HomePage extends StatelessWidget {
               onTap: _signOut,
             ),
 
-            new ListTile(
-              title: new Text("Cancelar"),
-              trailing: new Icon(Icons.cancel, color: Colors.blueAccent),
+            ListTile(
+              title: Text("Cancelar"),
+              trailing: Icon(Icons.cancel, color: Colors.blueAccent),
               onTap: () => Navigator.pop(context),
             ),
           ],
         ),
       ),
-      /*
-      body: new ListView(
-        children: <Widget>[
-          new Card(
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new Image.asset(
-                  'imagenes/calle2.jpg',
-                  width: 500.0,
-                  height: 1000.0,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.topLeft,
-                ),
-              ],
-            ),
-          ),
-
-          /*new Image.asset(
-            'imagenes/calle.jpg',
-            width: 490.0,
-            height: 1200.0,
-            fit: BoxFit.fill,
-          ),*/
-        ],
-      ),*/
 
       body: Scaffold(
         body: new ListView(
