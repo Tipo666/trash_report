@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 //import 'package:location/location.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -182,9 +183,9 @@ class _CameraAppState extends State<CrearReportes> {
 
     final StorageUploadTask task = ref.putFile(file);
 
-    //final Uri downloadUrl = (await task.future).downloadUrl;
+    final Uri downloadUrl = (await task.future).downloadUrl;
 
-    //_path = downloadUrl.toString();
+    _path = downloadUrl.toString();
 
     //print(_path);
   }

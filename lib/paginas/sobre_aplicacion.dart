@@ -9,117 +9,58 @@ class _SobreAplicacionState extends State<SobreAplicacion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Sobre la Aplicación"),
+      appBar: AppBar(
+        title: Text("Sobre la Aplicación"),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
       ),
-      body: new ListView(
+      body: ListView(
         children: <Widget>[
-          new Card(
-            child: new Column(
+          Card(
+            child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new ListTile(
-                  leading: new Icon(
+                 ListTile(
+                  leading: Icon(
                     Icons.account_box,
                     color: Colors.blue,
                     size: 26.0,
                   ),
-                  title: new Text(
-                    "Anlly Polonia",
-                    style: new TextStyle(fontWeight: FontWeight.w400),
+                  title: Text(
+                    "César Báez\nErnesto Ledesma\nAlejandro Rojas",
+                    style: TextStyle(fontWeight: FontWeight.w400),
                   ),
-                  subtitle: new Text("Ingeniera en  Sistemas y Computación"),
+                  subtitle: Text("Ingenieros en  Sistemas y Computación"),
                 ),
-                new Divider(
+                 Divider(
                   color: Colors.blue,
                   indent: 16.0,
                 ),
-                new ListTile(
-                  leading: new Icon(
+                ListTile(
+                  leading: Icon(
                     Icons.email,
                     color: Colors.blue,
                     size: 26.0,
                   ),
-                  title: new Text(
-                    "anllypolonializ@gmail.com",
-                    style: new TextStyle(fontWeight: FontWeight.w400),
-                  ),
-                ),
-                new Divider(
-                  color: Colors.blue,
-                  indent: 16.0,
-                ),
-                new ListTile(
-                  leading: new Icon(
-                    Icons.phone,
-                    color: Colors.blue,
-                    size: 26.0,
-                  ),
-                  title: new Text(
-                    "829-497-1061",
-                    style: new TextStyle(fontWeight: FontWeight.w400),
-                  ),
-                )
-              ],
-            ),
-          ),
-          new Card(
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new ListTile(
-                  leading: new Icon(
-                    Icons.account_box,
-                    color: Colors.blue,
-                    size: 26.0,
-                  ),
-                  title: new Text(
-                    "César Báez",
-                    style: new TextStyle(fontWeight: FontWeight.w400),
-                  ),
-                  subtitle: new Text("Ingeniero en  Sistemas y Computación"),
-                ),
-                new Divider(
-                  color: Colors.blue,
-                  indent: 16.0,
-                ),
-                new ListTile(
-                  leading: new Icon(
-                    Icons.email,
-                    color: Colors.blue,
-                    size: 26.0,
-                  ),
-                  title: new Text(
+                  title: Text(
                     "cesarbaez100@gmail.com",
-                    style: new TextStyle(fontWeight: FontWeight.w400),
+                    style: TextStyle(fontWeight: FontWeight.w400),
                   ),
                 ),
-                new Divider(
+                 Divider(
                   color: Colors.blue,
                   indent: 16.0,
                 ),
-                new ListTile(
-                  leading: new Icon(
-                    Icons.phone,
-                    color: Colors.blue,
-                    size: 26.0,
-                  ),
-                  title: new Text(
-                    "809-873-3340",
-                    style: new TextStyle(fontWeight: FontWeight.w400),
-                  ),
-                )
+
               ],
             ),
           ),
 
-          new Card(
+          Card(
             child: new Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new ListTile(
+                 ListTile(
                   leading: new Icon(
                     Icons.account_box,
                     color: Colors.blue,
@@ -131,7 +72,7 @@ class _SobreAplicacionState extends State<SobreAplicacion> {
                   ),
                   subtitle: new Text("Esta aplicación fue desarrollada usando el Framework UI Flutter, el Lenguaje Dart, el IDE Visual Studio y el BackEnd Firebase. Todos pertenecientes a Google Inc. "),
                 ),
-                new Divider(
+                Divider(
                   color: Colors.blue,
                   indent: 16.0,
                 ),
