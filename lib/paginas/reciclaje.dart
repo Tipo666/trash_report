@@ -34,7 +34,8 @@ class _ReciclajeState extends State<Reciclaje> {
                   ),
                   title: const Text(
                     'Reciclaje\n',
-                    style: const TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 28.0, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
                   subtitle: const Text(
@@ -66,7 +67,8 @@ class _ReciclajeState extends State<Reciclaje> {
                   ),
                   title: const Text(
                     'Cadena de reciclaje\n',
-                    style: const TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 28.0, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
                   subtitle: const Text(
@@ -96,7 +98,8 @@ class _ReciclajeState extends State<Reciclaje> {
                   ),
                   title: const Text(
                     'Vectores Contaminantes\n',
-                    style: const TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 28.0, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
                   subtitle: const Text(

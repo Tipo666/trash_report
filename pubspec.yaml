@@ -12,7 +12,7 @@ dependencies:
   firebase_core: 0.2.4
   firebase_database: 1.0.1
   firebase_storage: 0.3.7
-  image_picker: ^0.4.4
+  image_picker: ^0.4.12
 
 
 
@@ -32,19 +32,17 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
+  # To add assets to yomur application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
   assets:
-    - imagenes/calle2.jpg
     - imagenes/Alcaldia.png
     - imagenes/baden.jpg
     - imagenes/altura.jpeg
     - imagenes/placeholder.png
     - imagenes/localizacion.png
-    - imagenes/prueba.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

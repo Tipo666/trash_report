@@ -63,6 +63,7 @@ class _VerReportesState extends State<VerReportes> {
     return Card(
       child: Container(
         padding: EdgeInsets.all(20.0),
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -71,6 +72,11 @@ class _VerReportesState extends State<VerReportes> {
               style: Theme.of(context).textTheme.title,
             ),
             Text('mensaje : $mensaje'),
+            Row(children: <Widget>[
+              Icon(Icons.brightness_1, color: Colors.red,),
+              Icon(Icons.brightness_1, color: Colors.yellow,),
+              Icon(Icons.brightness_1, color: Colors.green,)
+            ],),
           ],
         ),
       ),

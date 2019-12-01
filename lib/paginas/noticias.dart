@@ -9,18 +9,18 @@ class _NoticiasState extends State<Noticias> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Noticias"),
+      appBar: AppBar(
+        title: Text("Noticias"),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
       ),
-      body: new ListView(
+      body: ListView(
         children: <Widget>[
-          new Card(
-            child: new Column(
+          Card(
+            child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new Image.network(
+                Image.network(
                   "http://ayuntamientolavega.gob.do/wp-content/uploads/slider1/slider-dominicana-limpia-700x394.png",
                   width: 350.0,
                   height: 150.0,
@@ -47,11 +47,11 @@ class _NoticiasState extends State<Noticias> {
               ],
             ),
           ),
-          new Card(
-            child: new Column(
+          Card(
+            child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new Image.network(
+                Image.network(
                   "http://ayuntamientolavega.gob.do/wp-content/uploads/2018/07/37030222_2097234860499589_9053247506086887424_n.jpg",
                   width: 350.0,
                   height: 150.0,
@@ -71,11 +71,11 @@ class _NoticiasState extends State<Noticias> {
               ],
             ),
           ),
-          new Card(
-            child: new Column(
+          Card(
+            child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new Image.network(
+                Image.network(
                   "http://ayuntamientolavega.gob.do/wp-content/uploads/2018/07/36840926_2093764114179997_449473593156304896_n.jpg",
                   width: 350.0,
                   height: 150.0,
@@ -95,11 +95,11 @@ class _NoticiasState extends State<Noticias> {
               ],
             ),
           ),
-          new Card(
-            child: new Column(
+          Card(
+            child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new Image.network(
+                Image.network(
                   "http://ayuntamientolavega.gob.do/wp-content/uploads/2018/07/36367623_2083134678576274_5138438958140620800_n.jpg",
                   width: 350.0,
                   height: 150.0,
@@ -117,52 +117,6 @@ class _NoticiasState extends State<Noticias> {
                       '\nEl Ayuntamiento del Municipio de La Vega reconoció el mérito educativo de onces destacados profesores, durante un acto efectuado en la Sala de Sesiones Don Mario Concepción y que fue presidido por el alcalde Kelvin Cruz.\n'
                       '\nLos educadores con más de 40 años cada uno en el Magisterio Nacional, fueron elegidos a unanimidad por el concejo de Regidores que preside el arquitecto Vladimir Viloria quien pronuncio las palabras de bienvenidas del acto.\n'
                       '\nLa felicitación a los reconocidos estuvo a cargo del licenciado Pablo Rosario, presidente de la Asociación Dominicana de Profesores filial La Vega.\n'),
-                ),
-              ],
-            ),
-          ),
-          new Card(
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new Image.asset(
-                  'imagenes/baden.jpg',
-                  width: 350.0,
-                  height: 50.0,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.topLeft,
-                ),
-                const ListTile(
-                  leading: const Icon(
-                    Icons.featured_video,
-                    color: Colors.blueAccent,
-                  ),
-                  title: const Text('Alcaldía Vegana nuevo Baden'),
-                  subtitle: const Text(
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '),
-                ),
-              ],
-            ),
-          ),
-          new Card(
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new Image.asset(
-                  'imagenes/baden.jpg',
-                  width: 350.0,
-                  height: 50.0,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.topLeft,
-                ),
-                const ListTile(
-                  leading: const Icon(
-                    Icons.featured_video,
-                    color: Colors.blueAccent,
-                  ),
-                  title: const Text('Alcaldía Vegana nuevo Baden'),
-                  subtitle: const Text(
-                      'Ya se encuentra en funcionamiento el nuevo baden en el sector Altos de Chavón '),
                 ),
               ],
             ),

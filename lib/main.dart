@@ -22,10 +22,10 @@ Ventanas:
 9. Crear Reporte
 
  */
-void main() => runApp(new MaterialApp(
+void main() => runApp(MaterialApp(
       theme: ThemeData(
           primaryColor: Colors.blueAccent, accentColor: Colors.redAccent),
       debugShowCheckedModeBanner: false,
-      home: new RootPage(auth: new Auth()),
+      home: RootPage(auth: Auth()),
       routes: routes,
     ));
